@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { EditUserDTO } from './dtos';
 
 export enum UserRoles {
   ADMIN = 'ADMIN',
@@ -24,5 +25,10 @@ export class User {
     this.createdAt = new Date();
     this.updatedAt = new Date();
     this.deletedAt = null;
+  }
+
+  edit(editUserDTO: EditUserDTO) {
+    this.name = editUserDTO.name ?? this.name;
+    this.email = editUserDTO.email ?? this.email;
   }
 }

@@ -9,7 +9,7 @@ import { Request } from 'express';
 import { UserRoles } from 'src/domain/model/User/User';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
