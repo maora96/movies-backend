@@ -24,7 +24,6 @@ export class MovieService {
   }
 
   async findAll(filters: Filters) {
-    console.log(filters);
     const movies = await this.movieRepository.find({
       where: {
         ...(filters?.title && { title: ILike(`%${filters?.title}%`) }),
