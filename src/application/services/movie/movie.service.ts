@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Movie } from 'src/domain/model/Movie/Movie';
-import { ILike, In, Repository } from 'typeorm';
+import { ArrayContains, ILike, In, Repository } from 'typeorm';
 import { Filters } from './dtos';
 
 @Injectable()
@@ -24,6 +24,7 @@ export class MovieService {
   }
 
   async findAll(filters: Filters) {
+    console.log(filters);
     const movies = await this.movieRepository.find({
       where: {
         ...(filters?.title && { title: ILike(`%${filters?.title}%`) }),
@@ -31,10 +32,10 @@ export class MovieService {
           director: ILike(`%${filters?.director}%`),
         }),
         ...(filters?.genres && {
-          genres: In(filters.genres),
+          genres: ArrayContains(filters.genres),
         }),
         ...(filters?.actors && {
-          actors: In(filters.actors),
+          actors: ArrayContains(filters.actors),
         }),
       },
     });

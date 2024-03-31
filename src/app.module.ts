@@ -11,6 +11,8 @@ import { UserSchema } from './infra/database/schemas/User';
 import { MovieSchema } from './infra/database/schemas/Movie';
 import { TerminusModule } from '@nestjs/terminus';
 import { JwtModule } from '@nestjs/jwt';
+import { AuthService } from './application/services/auth/auth.service';
+import { AuthController } from './infra/controllers/auth/auth.controller';
 
 @Module({
   imports: [
@@ -26,15 +28,15 @@ import { JwtModule } from '@nestjs/jwt';
       port: Number(process.env.DB_PORT),
     }),
     TerminusModule,
-    TypeOrmModule.forFeature([UserSchema, UserSchema]),
+    TypeOrmModule.forFeature([UserSchema, MovieSchema]),
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '7d' },
     }),
   ],
-  controllers: [AppController, UserController, MovieController],
-  providers: [AppService, UserService, MovieService],
+  controllers: [AppController, UserController, MovieController, AuthController],
+  providers: [AppService, UserService, MovieService, AuthService],
   exports: [TypeOrmModule],
 })
 export class AppModule {}

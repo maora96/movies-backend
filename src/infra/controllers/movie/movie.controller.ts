@@ -35,7 +35,7 @@ export class MovieController {
 
   @UseGuards(ClientGuard)
   @Post('/list')
-  async list(@Query() queries: FiltersDTO) {
+  async list(@Body() queries: FiltersDTO) {
     const content = await this.movieService.findAll(queries);
 
     return content;

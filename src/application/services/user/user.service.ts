@@ -19,7 +19,14 @@ export class UserService {
 
     user.edit(body);
 
-    return this.userRepository.save(user);
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      updatedAt: user.updatedAt,
+      cratedAt: user.createdAt,
+    };
   }
 
   async delete(id: string) {
@@ -30,6 +37,8 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    return this.userRepository.softRemove(user);
+    await this.userRepository.softRemove(user);
+
+    return true;
   }
 }
