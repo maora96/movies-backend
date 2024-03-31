@@ -12,6 +12,12 @@ Bibliotecas usadas:
 
 Nota: primeiro usuário (admin) deve ser criado direto na database, já que a rota de criação de usuário é protegida para apenas admins
 
+Tentei utilizar os princípios de DDD, SOLID e Clean Code nesse projeto. Gostaria de ter adicionado migrations e testes, mas por questão de tempo acabou não acontecendo. Obrigada pela oportunidade de qualquer forma!
+
+## Documentação
+
+- [Swagger](http://localhost:3000/api#/) (quando a app estiver rodando)
+
 ## Instalação
 
 ```bash
@@ -32,3 +38,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Mais
+
+[Frontend](https://github.com/maora96/movies-frontend)
