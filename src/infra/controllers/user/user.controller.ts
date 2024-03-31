@@ -9,7 +9,9 @@ import {
 import { UserService } from 'src/application/services/user/user.service';
 import { UpdateUserDTO } from './dtos/signup.dto';
 import { ClientGuard } from '../auth/client.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('/v1/user')
 export class UserController {
   constructor(private userService: UserService) {}

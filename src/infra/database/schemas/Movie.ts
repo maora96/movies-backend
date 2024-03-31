@@ -21,7 +21,7 @@ export const MovieSchema = new EntitySchema<Movie>({
       type: String,
     },
     rating: {
-      type: Number,
+      type: 'float',
       default: 0,
     },
     numberOfRatings: {

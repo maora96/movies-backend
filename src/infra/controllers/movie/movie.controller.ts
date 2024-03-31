@@ -13,7 +13,9 @@ import { CreateMovieDTO } from './dtos/create.dto';
 import { AdminGuard } from '../auth/admin.guard';
 import { FiltersDTO } from './dtos/filters.dto';
 import { VoteDTO } from './dtos/vote.dto';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('movies')
 @Controller('/v1/movie')
 export class MovieController {
   constructor(private movieService: MovieService) {}

@@ -38,6 +38,7 @@ export class Movie {
 
   vote(rating: number) {
     this.numberOfRatings += 1;
-    this.rating = this.rating + rating / this.numberOfRatings;
+    const sum = Number(this.rating) + Number(rating);
+    this.rating = Number((sum / Number(this.numberOfRatings)).toFixed(1));
   }
 }
